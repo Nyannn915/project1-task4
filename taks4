@@ -15,6 +15,10 @@ def textoggle_move(board, word_sequence, spare_letters):
         for row in range(height - 1, -1, -1):
             if remaining:
                 new_board[row][col] = remaining.pop(0)
+            elif spare_index < len(spare_letters):
+                new_board[row][col] = spare_letters[spare_index]
+                spare_index += 1
             else:
-                new_board[row][col] = None  # temp placeholder
+                new_board[row][col] = None  # still placeholder
     return new_board
+
