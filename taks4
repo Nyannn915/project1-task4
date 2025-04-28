@@ -1,4 +1,5 @@
 def textoggle_move(board, word_sequence, spare_letters):
-    # Just copy the board first, will fill logic soon
     new_board = [row[:] for row in board]
+    for row, col in word_sequence:
+        new_board[row][col] = None
     return new_board
