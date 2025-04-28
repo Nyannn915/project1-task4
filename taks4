@@ -2,4 +2,9 @@ def textoggle_move(board, word_sequence, spare_letters):
     new_board = [row[:] for row in board]
     for row, col in word_sequence:
         new_board[row][col] = None
+
+    height = len(board)
+    width = len(board[0])
+    spare_index = 0  # prepare for using spare_letters
+
     return new_board
