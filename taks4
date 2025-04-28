@@ -1,17 +1,26 @@
+# update the board after a word has been removed and letters fall + refill
 def textoggle_move(board, word_sequence, spare_letters):
+    # make a copy so the original board won't be changed
     new_board = [row[:] for row in board]
+
+    # remove letters that are part of the matched word
     for row, col in word_sequence:
         new_board[row][col] = None
 
     height = len(board)
     width = len(board[0])
-    spare_index = 0
+    spare_index = 0  # keep track of where we are in spare_letters
 
+    # go through each column one by one
     for col in range(width):
         remaining = []
+
+        # collect the letters that are still left in this column
         for row in range(height - 1, -1, -1):
             if new_board[row][col] is not None:
                 remaining.append(new_board[row][col])
+
+        # refill the column from bottom to top
         for row in range(height - 1, -1, -1):
             if remaining:
                 new_board[row][col] = remaining.pop(0)
@@ -19,6 +28,7 @@ def textoggle_move(board, word_sequence, spare_letters):
                 new_board[row][col] = spare_letters[spare_index]
                 spare_index += 1
             else:
-                new_board[row][col] = '#'
+                new_board[row][col] = '#'  # fill with '#' if spares run out
+
     return new_board
 
