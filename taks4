@@ -19,6 +19,6 @@ def textoggle_move(board, word_sequence, spare_letters):
                 new_board[row][col] = spare_letters[spare_index]
                 spare_index += 1
             else:
-                new_board[row][col] = None  # still placeholder
+                new_board[row][col] = '#'
     return new_board
 
